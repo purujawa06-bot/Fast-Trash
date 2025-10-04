@@ -73,14 +73,15 @@ const buildApiCollection = () => {
 
 const apiCollection = buildApiCollection();
 
-app.get('/', (req, res) => {
-  const baseDomain = `${req.protocol}://${req.get('host')}`;
+app.get('/router.json', (req, res) => {
+  const baseDomain = `https://${req.get('host')}`;
 
   const endpointsWithUrl = apiCollection.map(endpoint => ({
     ...endpoint,
     url: `${baseDomain}${endpoint.path}`
   }));
 
+  res.setHeader('Content-Type', 'application/json');
   res.json({
     project_name: "Fast-Trash API",
     version: "1.0.0",
@@ -91,10 +92,7 @@ app.get('/', (req, res) => {
 });
 
 app.use((req, res, next) => {
-    res.status(404).json({
-        status: 'error',
-        message: `Endpoint tidak ditemukan. Cek dokumentasi di /`
-    });
+    res.redirect('/router.json')
 });
 
 app.listen(PORT, () => {
