@@ -1,7 +1,7 @@
 /*
-* nama: testing-post
+* nama: testing-get
 * kategori: main
-* metode: post
+* metode: get
 * params: tes* user_id
 * versi: 1.0.0
 * status: aktif
