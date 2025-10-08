@@ -1,5 +1,7 @@
 # Fast-Trash
 
+[![GitHub Actions Workflow Status](https://github.com/purujawa06-bot/Fast-Trash/actions/workflows/ci.yml/badge.svg)](https://github.com/purujawa06-bot/Fast-Trash/actions)
+
 ## Overview
 Fast-Trash is a lightweight and efficient API designed to streamline waste management processes, providing quick access to information regarding waste disposal, collection schedules, or related services. It aims to simplify the way users interact with waste management systems, making information retrieval fast and accessible.
 
@@ -78,3 +80,4 @@ Distributed under the MIT License. See `LICENSE` for more information (if applic
 
 ---
 *Developed with 💖 by the purujawa06-bot team.*
+---
