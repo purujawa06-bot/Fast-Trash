@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
-const YAML = require('yamljs'); // Keep YAML for potential future use or if user wants to convert, though not strictly needed for this direct JSON generation.
+const YAML = require('yamljs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -179,12 +179,18 @@ const buildApiCollection = () => {
 // Build the API collection and populate swaggerDocument.paths
 buildApiCollection();
 
-// Serve Swagger UI
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-// Remove the old /router.json and its redirect
-// app.get('/router.json', (req, res) => { /* ... */ });
-// app.use((req, res, next) => { res.redirect('/router.json') });
+// Serve Swagger UI with enhanced error handling
+try {
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+} catch (error) {
+  console.error('❌ Error setting up Swagger UI:', error);
+  // Provide a fallback route for /api-docs to display an error message
+  app.get('/api-docs', (req, res) => {
+    res.status(500).send(
+      `<html>\n<head><title>Swagger UI Error</title></head>\n<body>\n  <h1>Error Loading API Documentation</h1>\n  <p>There was an error setting up Swagger UI. Please check the server console for details.</p>\n  <p>Error: ${error.message}</p>\n</body>\n</html>`
+    );
+  });
+}
 
 // Redirect root path to Swagger UI
 app.get('/', (req, res) => {
