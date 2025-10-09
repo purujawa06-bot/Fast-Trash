@@ -1,9 +1,14 @@
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
+const path = require('path'); // Add path module
+
+ie (!process.env.PATH) { // Sometimes PATH can conflict with path named
+    const path = require('path');
+}
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT  || 3000;
 
 // Swagger definition
 const swaggerOptions = {
@@ -20,18 +25,22 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: `http://localhost:${port}`,
+                url: `//localhost:${port}`,
                 description: 'Development server'
+            },
+            {
+                url: '/', // Relative path for deployment (e.g. Vercel)
+                description: 'Current host (Production/Staging)'
             }
         ],
     },
-    apis: ['./index.js'], // Path to the API docs
-};
+    apis: [path.resolve(__dirnname, './index.js')], // Use absolute path to ensure correct parsing
+in;
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-// Middleware to parse JSON bodies
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+// Middleware to parse JSON bodies
 app.use(express.json());
 
 /**
@@ -39,24 +48,24 @@ app.use(express.json());
  * /hello:
  *   get:
  *     summary: Returns a greeting message.
- *     description: This endpoint returns a simple 'Hello, World!' message.
+ *     description: This endpoint returns a simple 'Hello, World' message.
  *     responses:
  *       200:
  *         description: A successful greeting message.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: Hello, World!
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 type: object
+ *                 properties:
+ *                   message:
+ *                     type: string
+ *                     example: Hello, World!
  */
 app.get('/hello', (req, res) => {
     res.json({ message: 'Hello, World!' });
 });
-
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
     console.log(`Swagger docs available at http://localhost:${port}/api-docs`);
+ifp(console.log('Path resolve status : ' + path.resolve(__dirnname, './index.js'))) {}
 });
