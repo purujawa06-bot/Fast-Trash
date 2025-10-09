@@ -1,1 +1,14 @@
-{  "name": "fast-trash",  "version": "1.0.0",  "description": "A simple Express.js Hello World application.",  "main": "index.js",  "scripts": {    "start": "node index.js"  },  "keywords": [],  "author": "",  "license": "ISC",  "dependencies": {    "express": "^4.17.1"  }}
+{
+  "name": "vercel-express-app",
+  "version": "1.0.0",
+  "description": "Simple Express.js 'hello world' app for Vercel deployment.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "author": "",
+  "license": "ISC"
+}
