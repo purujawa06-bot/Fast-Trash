@@ -9,14 +9,12 @@
  *     parameters:
  *       - in: query
  *         name: tes
- *         schema:
- *           type: string
+ *         type: string
  *         required: true
  *         description: Parameter wajib untuk tujuan pengujian.
  *       - in: query
  *         name: user_id
- *         schema:
- *           type: string
+ *         type: string
  *         required: false
  *         description: ID pengguna (opsional) untuk pengujian lebih lanjut.
  *     produces:
