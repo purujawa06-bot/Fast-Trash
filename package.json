@@ -1,0 +1,23 @@
+{
+  "name": "simple-rest-api-swagger",
+  "version": "1.0.0",
+  "description": "A simple REST API with Swagger documentation using Express.js.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "swagger",
+    "express",
+    "node"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
