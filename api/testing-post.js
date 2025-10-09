@@ -43,7 +43,7 @@
  *               properties:
  *                 status:
  *                   type: string
- *                   example: success
+ *                   example: "success"
  *                 message:
  *                   type: string
  *                   example: "Endpoint 'testing' berhasil dipanggil!"
@@ -65,7 +65,7 @@
  *               properties:
  *                 status:
  *                   type: string
- *                   example: error
+ *                   example: "error"
  *                 message:
  *                   type: string
  *                   example: "Parameter 'tes' wajib diisi."
